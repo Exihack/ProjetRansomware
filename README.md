@@ -1,7 +1,7 @@
 # Projet Ransomware
 
 
-##Les points clés :
+## Les points clés :
 
 1. Propagation : Mail, macros, rubber ducky
 
@@ -13,7 +13,7 @@
 
 5. Faire une conf
 
-##Ressources : 
+## Ressources : 
 
 Ransomware :
 

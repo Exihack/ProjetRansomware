@@ -8,9 +8,7 @@
 
 3. Serveur : stocker malware, stocker la clé, générer id unique pour la machine
 
-4. Partage : GitHub
-
-5. Faire une conf
+4. Faire une conf
 
 ## Ressources : 
 

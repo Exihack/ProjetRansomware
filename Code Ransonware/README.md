@@ -5,6 +5,8 @@ Pour l'utiliser, il est nécessaire d'installer la bibliothèque Pycrypto et d'u
 
 * pip install pycrypto
 
+* Pour éviter tous problèmes avec <a href="http://www.py2exe.org/index.cgi/FrontPage">Py2exe</a>, il est nécessaire d'installer les librairies comme stipuler ci-dessus ou avec la commande "easy_install.exe --always-unzip pycrypto". Py2exe ne supporte pas nativement les librairies aux formats .egg -> <a href="https://github.com/dlitz/pycrypto/issues/118">Py2exe and Pycrypto</a>
+
 Ce code sera amélioré pour accueillir de nouvelles fonctionnalités.
 
 * La suppression de la clé en mémoire

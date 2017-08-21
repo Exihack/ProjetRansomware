@@ -1,22 +1,24 @@
 # A Propos
 
-Le code présent dans ce dossier est une alpha du ransonware. Il est sujet à certains bug.
-Pour l'utiliser, il est nécessaire d'installer la bibliothèque Pycrypto et d'utiliser la version 2.7 de python.
+Le code présent dans ce dossier est la seconde version du ransonware.
+Pour l'utiliser, il est nécessaire d'avoir :
 
-* pip install pycrypto
+* La version 3 de python
+* Une machine servant de serveur
+* Une machine victime
 
-* Pour éviter tous problèmes avec <a href="http://www.py2exe.org/index.cgi/FrontPage">Py2exe</a>, il est nécessaire d'installer les librairies comme stipuler ci-dessus ou avec la commande "easy_install.exe --always-unzip pycrypto". Py2exe ne supporte pas nativement les librairies aux formats .egg -> <a href="https://github.com/dlitz/pycrypto/issues/118">Py2exe and Pycrypto</a>
+il faut aussi installer les bibliothèques suivantes :
 
-Ce code sera amélioré pour accueillir de nouvelles fonctionnalités.
+* pip install cryptography
+* pip install cx-freeze
+
+
+Ce code sera amélioré pour accueillir de nouvelles fonctionnalités comme :
 
 * La suppression de la clé en mémoire
+* L'améliorer du code d'une façon générale
 
-* La suppression réelle du fichier (le remplir de zéro par exemple)
+# Notes 
 
-* Développer le code de façon à évader les solutions antivirus
-
-* Il est aussi nécessaire de chiffrer la connexion entre la machine victime et le serveur
-
-* Améliorer le code d'une façon générale
-
-* D'autres idées...
+* le ransonware utilise un système de Threading pour accélérer le processus de chiffrement
+* Les fichiers chiffrés sont totalement perdus si la clé de déchiffrement n'est pas bonne

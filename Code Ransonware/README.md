@@ -16,7 +16,7 @@ il faut aussi installer les bibliothèques suivantes :
 Ce code sera amélioré pour accueillir de nouvelles fonctionnalités comme :
 
 * La suppression de la clé en mémoire
-* L'améliorer du code d'une façon générale
+* L'amélioration du code d'une façon générale
 
 # Notes 
 

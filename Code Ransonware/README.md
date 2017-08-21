@@ -20,7 +20,8 @@ Ce code sera amélioré pour accueillir de nouvelles fonctionnalités comme :
 
 # Notes 
 
-* le ransonware utilise un système de Threading pour accélérer le processus de chiffrement
+* Le ransonware utilise un système de Threading pour accélérer le processus de chiffrement
+* La connexion entre la victime et client est chiffrée avec socket TLS
 * Les fichiers chiffrés sont totalement perdus si la clé de déchiffrement n'est pas bonne
 * Pour éviter certains problèmes de compilations avec la GUI (module Tkinter), il faut deux fichiers DLL à la racine du dossier "tcl86t.dll" et  "tk86t.dll". Leurs chemins respectifs doivent être spécifiés dans le fichier "Setup.py"
 * Une icone est aussi nécessaire. Après la compilation, il suffit de l'ajouter dans le dossier et la nommer "icone.ico"

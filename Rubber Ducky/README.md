@@ -1,4 +1,4 @@
-# A propos
-* Les codes, ci-dessus, sont exécutés avec les droits administrateurs et donc bypass l'UAC de Windows.
-* Ces codes, ducky script, sont fonctionnels sous un hôte Windows 10. Cependant, ils ne sont pas adaptés si la machine fait partie d'un domaine.
-* Pour cela certaines modifications dans le code devront être faites de plus l'utilisateur doit avoir certaines informations concernant le domaine comme le MDP de l'administrateur.
+# About
+* The codes, above, are executed with admin rights by bypassing the Windows UAC
+
+* The ducky scripts are working only on a Windows 10 host. This code won't work on a machine which belongs to a domain. To do so, you need to do some modifications. By the way, you also need specific information about the domain like the admin password.

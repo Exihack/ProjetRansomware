@@ -1,7 +1,7 @@
-# A Propos
+# About
 
-Les codes présents dans ce dossier sont fonctionnels, mais soumis à certaines améliorations.
+The codes above can be used in a macro to infect a victim, but still need some improvements
 
-* Rendre le code Compatible avec OSX
+* Make the code compatible with OSX
 
-* Retirer les liens en dûrs
+* Remove the hard-coded links

@@ -51,7 +51,7 @@ else:
         Thread.start()
         i += 1
 
-    # We make sure all thread are finish
+    # We make sure all threads are finished
     for t in threading.enumerate():
         if t is not main_thread:
             t.join()

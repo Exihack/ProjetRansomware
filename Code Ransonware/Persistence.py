@@ -1,6 +1,5 @@
 # import Windows registry API
 import winreg, os
-from ctypes import windll
 
 
 # path non Admin :
@@ -10,10 +9,6 @@ from ctypes import windll
 # path Admin :
 # winreg.OpenKey : '\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'
 #
-
-# Variables
-# Check, if the programm is executed with admin rights
-is_admin = windll.shell32.IsUserAnAdmin()
 
 def create_registry_key(name, value, path, is_admin):
     """
@@ -31,7 +26,7 @@ def create_registry_key(name, value, path, is_admin):
         print("Can't create the key : An error occurs")
 
 
-def check_if_key_exists():
+def check_if_key_exists(is_admin):
     """
     Check if a registry key exists
     :return -- registryKeyExists : TRUE or FALSE:

@@ -1,32 +1,32 @@
-# A Propos
+# About
 
-Le code présent dans ce dossier est la version 2.1 du ransomware
-Pour l'utiliser, il est nécessaire d'avoir :
+This code is the version 2.1 of the ransomware
+To use it, you will need :
 
-* La version 3 de python
-* Une machine servant de serveur
-* Une machine victime
+* Python version 3
+* A machine acting as a server
+* A victim machine
 
-il faut aussi installer les bibliothèques suivantes :
+You will need also those libraries :
 
 * pip install cryptography
 * pip install cx-freeze
 
 
-Ce code sera amélioré pour accueillir de nouvelles fonctionnalités comme :
+This code will be improve to add new features like :
 
-* L'amélioration du code d'une manière générale
+* Improve the code in general
 
 # Notes 
 
-* Le ransonware utilise un système de Threading pour accélérer le processus de chiffrement
-* La connexion entre la victime et client est chiffrée avec un socket TLS
-* Les fichiers chiffrés sont totalement perdus si la clé de déchiffrement n'est pas bonne
-* Pour éviter certains problèmes de compilations avec la GUI (module Tkinter), il faut deux fichiers DLL à la racine du dossier "tcl86t.dll" et  "tk86t.dll". Leurs chemins respectifs doivent être spécifiés dans le fichier "Setup.py"
-* Une icone est aussi nécessaire. Après la compilation, il suffit de l'ajouter dans le dossier et la nommer "icone.ico"
+* This ransomware uses a multi-threading system to improve the encrypt process
+* The connection between the client and the victim is encrypt with a TLS socket
+* The encrypt files are lost if the key is not the right one
+* To avoid some issues with the GUI (Tkinter module), you will need to add two DLL files at the root folder "tcl86t.dll" and "tk86t.dll". Their paths must be specify in the setup.py file.
+* An icon is necessary. You will need to add it in the new folder (created by setup.py) and named it "icon.ico"
 
-# Ajout des nouvelles fonctionnalités
+# Adding new features
 
-* Chiffrement des HDD externes
-* Création de clés de registre (persistance du ransomware)
-* La suppression de la clé en mémoire (Reboot forcé de la machine, il faudra améliorer cette fonction)
+* Encrypting external HDD files
+* Creating multiple registry keys (Persistence)
+* Removing the key from memory (unfortunately, you need to reboot the machine for that. It will be improved later)

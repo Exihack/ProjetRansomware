@@ -1,4 +1,4 @@
-# Projet Ransomware
+﻿# Projet Ransomware
 
 ## Les points clés :
 
@@ -8,7 +8,8 @@
 
 3. Serveur : stocker malware, stocker la clé, générer id unique pour la machine
 
-4. Faire une conf
+4. Conférence disponible (entre 7:30 et 35:30 minutes)
+[Lien 1](https://www.youtube.com/watch?v=nuDbx1P2ovo)
 
 ## Ressources : 
 

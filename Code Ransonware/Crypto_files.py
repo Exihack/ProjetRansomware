@@ -60,7 +60,7 @@ def encryption_function(key, non_encrypt_file):
     # Cipher generation
     cipher_suite = Fernet(key)
     filename, file_extension = os.path.splitext(non_encrypt_file)
-    # Padding de l'extension (8 bits dont dédiés à l'extension)
+    # Extension padding (8 bits are dedicated for the extension)
     file_extension += ' ' * (8 - (len(file_extension) % 8))
 
     with open(non_encrypt_file, 'rb') as file_handler:
@@ -85,7 +85,7 @@ def decryption_function(key, encrypt_file):
     """
     # Cipher generation
     cipher_suite = Fernet(key)
-    # Seperating filename and its extension
+    # Separate filename and its extension
     filename_without_extension, _ = os.path.splitext(encrypt_file)
 
     with open(filename_without_extension + '.enc', 'rb') as encrypt_file_without_extension:
@@ -102,13 +102,13 @@ def decryption_function(key, encrypt_file):
         # Reading the encrypt content
         cipher_text = encrypt_file_without_extension.read()
 
-        # Call the decrypting function
+        # Call the decrypt function
         plain_text = cipher_suite.decrypt(cipher_text)
         # Writing encrypted content in a new file
         with open(filename_without_extension + file_extension_without_8_characters, 'wb') as decrypt_file:
              decrypt_file.write(plain_text)
 
-    # Removing the encrypt file
+    # Remove the encrypt file
     os.remove(encrypt_file)
 
 
@@ -118,7 +118,7 @@ def overwrite_file(filename):
     :param filename -- file to fill with zeros:
     """
 
-    # Get statistic informations about the file
+    # Get statistic information about the file
     stat = os.stat(filename)
 
     with open(filename, 'r+') as of:

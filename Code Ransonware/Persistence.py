@@ -1,15 +1,6 @@
 # import Windows registry API
 import winreg, os
 
-
-# path non Admin :
-# '\\HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'
-#
-
-# path Admin :
-# winreg.OpenKey : '\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'
-#
-
 def create_registry_key(name, value, path, is_admin):
     """
     Create a registry key

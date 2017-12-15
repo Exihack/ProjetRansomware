@@ -23,14 +23,11 @@ build_exe_options = {"packages": ["cffi",
                                   "functools"],
                      "include_files": ["tcl86t.dll", "tk86t.dll"]}
 
-
-
 # GUI applications require a different base on Windows.
 # The default base is for console applications.
 base = None
 if sys.platform == "win32":
     base = "Win32GUI"
-
 
 # Setup function, specifying some parameters
 setup(

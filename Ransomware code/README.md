@@ -11,11 +11,6 @@ You will need also those libraries :
 * pip install cryptography
 * pip install cx-freeze
 
-
-This code will be improve to add new features like :
-
-* Improve the code in general
-
 # Notes 
 
 * This ransomware uses a multi-threading system to improve the encrypting process

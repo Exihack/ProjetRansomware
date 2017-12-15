@@ -3,7 +3,7 @@ import socket, ssl, datetime
 from datetime import datetime
 # Variables :
 host = ""
-port = 4000
+port = 4444
 
 
 def store_key(key, hostname):

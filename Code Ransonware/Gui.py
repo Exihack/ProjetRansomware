@@ -31,19 +31,10 @@ def decrypt(key, path):
             list_hdd = List_external_HDD.list_hdd_files()
             list_all_files = list_hdd + encrypt_files_list_C
 
-            # Debugging variable (to remove later)
-            j = 1
             # Loop through the files
             for encrypt_file in list_all_files:
-                # Print for debugging purpose, to remove later
-                print("starting thread n°:" + str(j))
                 # Create a thread for each files to accelerate the decrypting process
                 threading.Thread(target=Crypto_files.decryption_function, args=(key, encrypt_file)).start()
-                # Print for debugging purpose, to remove later
-                print(threading.enumerate())
-                # Print for debugging purpose, to remove later
-                print("Finishing thread n°:" + str(j))
-                j += 1
             # We check if all thread are finished
             for thread in threading.enumerate():
                 if thread is not main_thread:

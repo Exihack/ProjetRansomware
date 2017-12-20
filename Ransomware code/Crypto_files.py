@@ -35,16 +35,16 @@ def list_files(path):
     :return -- return a files list:
     """
     # List containing the files
-    liste_des_fichiers = []
+    files_list = []
 
     # Loop to retrieve the paths and filenames
     for current_directory, sub_directories, files in os.walk(path):
         for file in files:
             full_path_filename = (os.path.join(path + os.path.relpath(current_directory, path), file))
-            liste_des_fichiers.append(full_path_filename)
+            files_list.append(full_path_filename)
 
     # Return a files list
-    return liste_des_fichiers
+    return files_list
 
 
 def encryption_function(key, non_encrypt_file):
@@ -83,27 +83,20 @@ def decryption_function(key, encrypt_file):
     # Cipher generation
     cipher_suite = Fernet(key)
     # Separate filename and its extension
-    filename_without_extension, _ = os.path.splitext(encrypt_file)
+    filename_no_extension, _ = os.path.splitext(encrypt_file)
 
-    with open(filename_without_extension + '.enc', 'rb') as encrypt_file_without_extension:
+    with open(filename_no_extension + '.enc', 'rb') as encrypt_filename:
         # Reading the extension from the encrypt file
-        file_extension_with_8_characters = encrypt_file_without_extension.read(8).decode()
-        file_extension_without_8_characters = ''
-        # Eliminate the space in the extension
-        for letter in file_extension_with_8_characters:
-            if letter == ' ':
-                pass
-            else:
-                file_extension_without_8_characters += letter
+        file_extension = encrypt_filename.read(8).decode().replace(" ", "")
 
         # Reading the encrypt content
-        cipher_text = encrypt_file_without_extension.read()
+        cipher_text = encrypt_filename.read()
 
         # Call the decrypt function
         plain_text = cipher_suite.decrypt(cipher_text)
         # Writing encrypted content in a new file
-        with open(filename_without_extension + file_extension_without_8_characters, 'wb') as decrypt_file:
-             decrypt_file.write(plain_text)
+        with open(filename_no_extension + file_extension, 'wb') as decrypt_file:
+            decrypt_file.write(plain_text)
 
     # Remove the encrypt file
     os.remove(encrypt_file)

@@ -1,5 +1,5 @@
 # import
-import socket, ssl, datetime
+import socket, ssl, datetime, sys
 from datetime import datetime
 # Variables :
 host = ""
@@ -31,10 +31,14 @@ context.options |= ssl.PROTOCOL_TLSv1_2
 
 # Server listening
 while True:
-    new_socket, _ = sock.accept()
-    tls_socket = context.wrap_socket(new_socket, server_side=True)
-    # Receive the key and hostname
-    key = tls_socket.recv().decode()
-    hostname = tls_socket.recv().decode()
-    # Call the "store_key()" function
-    store_key(key, hostname)
+    try:
+        new_socket, _ = sock.accept()
+        tls_socket = context.wrap_socket(new_socket, server_side=True)
+        # Receive the key and hostname
+        key = tls_socket.recv().decode()
+        hostname = tls_socket.recv().decode()
+        # Call the "store_key()" function
+        store_key(key, hostname)
+    except KeyboardInterrupt:
+        print("CTRL+C received, stopping…")
+        sys.exit(0)

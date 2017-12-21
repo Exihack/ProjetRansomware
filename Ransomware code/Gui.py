@@ -4,7 +4,6 @@ from tkinter.messagebox import *
 from functools import partial
 import threading, Crypto_files, List_external_HDD
 
-
 # Variable
 main_thread = threading.currentThread()
 

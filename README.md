@@ -1,6 +1,6 @@
 ﻿# Ransomware Project
 
-## Disclaimer :
+## Disclaimer
 
 * Using this ransomware to attack personal computers and/or enterprise without consent is consider as an illegal activity. The end user is responsible to know the laws before any kind of use. The authors does not assume any consequences or any other illegals use of it and damages caused by it.
 
@@ -31,7 +31,7 @@ The two other folders aim to infect a victim :
 * To avoid some issues with the GUI (Tkinter module), you will need to add two DLL files "tcl86t.dll" and "tk86t.dll". Their paths must be specify in the setup.py file.
 * An icon is necessary. You will need to add it in the new folder (created by setup.py) and name it "icon.ico"
 
-## How to use it :
+## How to use it
 Note : to do the following steps, it's recommended using a Kali Linux
 1. You need to create an executable (don't forget "tcl86t.dll", "tk86t.dll" and "icon.ico")
    * python3 setup.py build
@@ -50,6 +50,6 @@ Note : to do the following steps, it's recommended using a Kali Linux
      * Use a zero day exploit
      * Use your imagination
 
-## Bonus :
-* Check the conference about it (between 7:30 et 35:30, it's in French)
-[Link here](https://www.youtube.com/watch?v=nuDbx1P2ovo)
+## Bonus
+* Check the conference about it (it's in French)
+[Link here](https://www.youtube.com/watch?v=UxkXiaHBQOE)
